@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+header{
+    background-color: #EAC926;
+}
+
+main{
+    margin: 0 auto;
+    width: 90%;
+    background-color: #EBEBEB;
+}
+
+p{
+    font-size: 12px;
+}
+
+h2{
+    font-size: 24PX;
+}
+
+.precio {
+    font-size: 18px;
+}
+
+.descuento {
+    font-size: 16px;
+    color: #39B54A;
+}
+
+.descripcion{
+    display: none; /*CON ESTO SE SACA HASTA EL ESPACIO*/
+    /*visibility: hidden; CON ESTE RESERVA EL ESPACIO*/
+}
+
+article{
+    margin: 10px;
+    background-color: white;
+}
+
+.search-button{
+    background-color: #EBEBEB;
+    width:min-content;
+}
+
+.burger-menu {
+    text-align: center;
+}
+
+.burger-menu i{
+    border-radius: 5px;
+    color: #EBEBEB;
+    background-color: #1259C3;
+    width: 40px;
+    height: 40px;
+    margin: 10px 0px 20px 0px;
+    padding: 10px;
+}
+
+footer {
+    text-align: center;
+}
+
+.icon-footer{
+    margin-bottom: 10px;
+    font-size: 2em;
+    color: #1259C3;
+}
+
+.carrousel img{
+    width: 100%;
+}
+
+.main-product {
+    border-top: 1px solid #EBEBEB;
+    margin: 10px;
+    padding: 15px;
+    position: relative;
+}
+
+/*.shipping i{
+    border-radius: 50px;
+    border: 1px solid #39B54A;
+    color: #39B54A;
+    width: 40px;
+    height: 40px;
+    margin: 10px 0px 20px 0px;
+    padding: 10px;
+}*/
+
+article img{
+    width: 100%;
+}
+
+nav{
+    display: none;
+}
+
+@media (min-width: 768px) {
+    /*Tablet*/
+    .descripcion{
+        font-size: 16px;
+        display:block;
+        /*visibility: visible;*/
+    }
+
+    .products article{
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    
+    }
+
+    .burger-menu{
+        display: none;
+    }
+
+    nav{
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    /*Laptop*/
+}
+
+
+.main-product > .shipping{
+    display: block;
+    font-size: 16px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #39b54a;
+    background-color: #FFF;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: -15px;
+    color: #39B54A;
+}
