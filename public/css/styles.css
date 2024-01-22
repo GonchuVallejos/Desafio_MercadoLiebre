@@ -2,14 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: 1px solid black;
 }
 body{
     font-family: 'Roboto', sans-serif;
-    text-align: center;
 }
 
 header{
-    background-color: #EAC926;
+    background-color: #116A7B;
+    text-align: center;
+    padding-top: 15px;
 }
 
 main{
@@ -28,11 +30,15 @@ h2{
 
 .precio {
     font-size: 18px;
+    width: 30%;
+    align-self: flex-start;
 }
 
 .descuento {
     font-size: 16px;
     color: #39B54A;
+    width: 70%;
+    align-self: flex-start;
 }
 
 .descripcion{
@@ -56,8 +62,8 @@ article{
 
 .burger-menu i{
     border-radius: 5px;
-    color: #EBEBEB;
-    background-color: #1259C3;
+    color: #116A7B;
+    background-color: #ECE5C7;
     width: 40px;
     height: 40px;
     margin: 10px 0px 20px 0px;
@@ -71,7 +77,7 @@ footer {
 .icon-footer{
     margin-bottom: 10px;
     font-size: 2em;
-    color: #1259C3;
+    color: #116A7B;
 }
 
 .carrousel img{
@@ -103,12 +109,29 @@ nav{
     display: none;
 }
 
-@media (min-width: 768px) {
-    /*Tablet*/
+ul, ol {
+    list-style: none;
+    
+}
+
+li{
+    display: inline-flex;
+}
+
+li a{
+    text-decoration:none;
+    color: #ECE5C7;
+}
+
+li a:active{
+    color: #9AD0C2;
+}
+  
+
+@media (min-width: 768px) { /*Tablet*/
     .descripcion{
         font-size: 16px;
         display:block;
-        /*visibility: visible;*/
     }
 
     .products article{
@@ -123,10 +146,54 @@ nav{
     nav{
         display: block;
     }
+
+    .products{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    article {
+        flex: 0 0 calc(50% - 20px);
+        box-sizing: border-box;
+    }
+
+    .encabezado {
+        display: flex;
+        /*flex-wrap: nowrap;*/
+        justify-content: space-between;
+    }
+
+
+    .navbar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    footer{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .footer-section{
+        display: flex;
+        flex-direction: column;
+    }
+
 }
 
-@media (min-width: 1024px) {
-    /*Laptop*/
+@media (min-width: 1024px) { /*Laptop*/
+    .products{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    article {
+        flex: 0 0 calc(25% - 20px);
+        box-sizing: border-box;
+    }
+
+
 }
 
 
@@ -143,4 +210,31 @@ nav{
     right: 20px;
     top: -15px;
     color: #39B54A;
+}
+
+.precio-descuento {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.encabezado {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    ;
+}
+
+.encabezado img {
+    width: 50%;
+}
+
+.encabezado .busqueda {
+    display: flex;
+    justify-content: center;
+    width: 50%;
 }
