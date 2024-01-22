@@ -74,6 +74,14 @@ footer {
     text-align: center;
 }
 
+footer{
+    padding: 10px;
+}
+
+.footer-section{
+    padding: 10px 0px 10px 0px;
+}
+
 .icon-footer{
     margin-bottom: 10px;
     font-size: 2em;
@@ -170,13 +178,14 @@ li a:active{
         justify-content: space-around;
     }
 
-    footer{
+    footer section{
+        
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
     }
 
     .footer-section{
-        display: flex;
         flex-direction: column;
     }
 
