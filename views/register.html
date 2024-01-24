@@ -9,6 +9,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/formsStyles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
@@ -22,9 +23,7 @@
             </a>
             <div class="busqueda">
                 <input type="search" placeholder="Buscar productos">
-                <div class="search-button">
-                    <i class="fas fa-search"></i>
-                </div>
+                <i class="fas fa-search"></i>
             </div>
             <div class="mensaje-header">
                 <p><i class="fas fa-hand-holding-usd"></i>Comprá en cuotas y sin tarjeta de crédito</p>
@@ -53,7 +52,8 @@
     </header>
 
     <main>
-        <form action="/register" method="POST" class="form-register" id="form-register">
+        <form action="/register" method="POST" class="form-register" id="form-register"
+            onsubmit="return validarFormulario()">
             <h2>CREAR CUENTA</h2>
             <div>
                 <label for="nombre">Nombre</label>
@@ -82,22 +82,30 @@
             <div>
                 <label for="perfilUsuario">Perfil de Usuario</label>
                 <select name="perfilUsuario" id="perfilUsuario" required>
-                    <option value="Seleccione">Seleccione</option>
+                    <option value="Seleccione">Seleccione su perfil usuario</option>
                     <option value="Comprador">Comprador</option>
                     <option value="Vendedor">Vendedor</option>
                 </select>
             </div>
-            <div>
-                <label for="categoria">Categorías</label>
-                <label for="electro">Electro</label>
-                <div class="form-register-categorias">
+            <div class="form-register-categoria-title"><label>Categorías</label></div>
+            <div class="form-register-categorias">
+                <div class="form-register-categorias-check">
+                    <label for="electro">Electro</label>
                     <input type="checkbox" id="electro" name="electro" value="Electro">
+                </div>
+                <div class="form-register-categorias-check">
                     <label for="moda">Moda</label>
                     <input type="checkbox" id="moda" name="moda" value="Moda">
+                </div>
+                <div class="form-register-categorias-check">
                     <label for="hogar">Hogar</label>
                     <input type="checkbox" id="hogar" name="hogar" value="Hogar">
+                </div>
+                <div class="form-register-categorias-check">
                     <label for="jugueteria">Juguetería</label>
                     <input type="checkbox" id="jugueteria" name="jugueteria" value="Juguetería">
+                </div>
+                <div class="form-register-categorias-check">
                     <label for="vidaSana">Vida Sana</label>
                     <input type="checkbox" id="vidaSana" name="vidaSana" value="Vida Sana">
                 </div>
@@ -120,9 +128,10 @@
                 <i class="fa-solid fa-eye" id="btn-re-password"
                     onclick="mostrarContrasena('re-password', 'btn-re-password')"></i>
             </div>
-
-            <button type="submit" class="btn-register">Registrarse</button>
-            <button type="button" class="btn-delete" onclick="limpiarFormulario()">Borrar</button>
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-register">Registrarse</button>
+                <button type="button" class="btn btn-delete" onclick="limpiarFormulario()">Limpiar formulario</button>
+            </div>
         </form>
     </main>
 
@@ -153,8 +162,16 @@
                     protegid@.</p>
             </div>
         </section>
-        <p>Copyright &copy 1999-2020 MercadoLiebre S.R.L.</p>
+        <div class="copy">
+            <p><strong>Copyright &copy 1999-2020 MercadoLiebre S.R.L.</strong></p>
+        </div>
     </footer>
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="myModal">
+        <p id="mensajeError" class="error"></p>
+        <button class="btn btn-delete" onclick="cerrarModal()">Cerrar</button>
+    </div>
 
     <script>
         function mostrarContrasena(tipoId, iconId) {
@@ -187,5 +204,39 @@
             }
         }
 
+        function validarFormulario() {
+            var form = document.getElementById('form-register');
+            var inputs = form.querySelectorAll('input, select, textarea');
+
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+
+                if (input.type !== 'submit' && input.type !== 'button') {
+                    if (input.value.trim().length < 2) {
+                        mostrarModalError('Todos los campos deben tener una longitud mayor a 1 carácter.');
+                        return false; // Evita el envío del formulario si la longitud no es válida
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        function mostrarModalError(mensaje) {
+            document.getElementById('mensajeError').textContent = mensaje;
+            abrirModal();
+        }
+
+        function abrirModal() {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('modalOverlay').style.display = 'block';
+        }
+
+        function cerrarModal() {
+            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
     </script>
-</body </html>
+</body>
+
+</html>

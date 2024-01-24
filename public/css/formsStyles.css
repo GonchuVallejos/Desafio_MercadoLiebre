@@ -1,0 +1,210 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.form-register div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.form-register div input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 25px;
+    border: none;
+}
+
+.form-pass {
+    position: relative;
+    display: inline-block;
+}
+
+.form-pass .input-pass {
+    padding-right: 30px;
+    width: 90%;
+}
+
+.form-pass .fa-solid {
+    cursor: pointer;
+    position: absolute;
+    color: #116A7B;
+    right: 20px;
+}
+
+.form-register label {
+    display: none;
+}
+
+.form-register {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #116A7B;
+    padding: 5px;
+    margin: 10px;
+    width: 90%;
+}
+
+.form-register h2 {
+    margin: 15px;
+    color: #ECE5C7;
+}
+
+.btn {
+    padding: 10px;
+    margin: 10px;
+    width: 50%;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+    color: #116A7B;
+}
+
+.btn-register {
+    color: green;
+}
+
+.btn-register:hover {
+    background-color: green;
+    color: #ECE5C7;
+}
+
+.btn-delete {
+    color: red;
+}
+
+.btn-delete:hover {
+    background-color: red;
+    color: #ECE5C7;
+}
+
+.btn-session {
+    color: #03264C;
+}
+
+.btn-session:hover {
+    background-color: #03264C;
+    color: #ECE5C7;
+}
+
+
+.form-register-categorias {
+    flex-direction: column;
+}
+
+.form-register-categorias label {
+    display: block;
+    width: 150px;
+    text-align: right;
+    color: #ECE5C7;
+}
+
+.form-register-categorias-check input {
+    width: 10px;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    margin: 10px
+}
+
+.form-buttons button {
+    width: 80%;
+}
+
+.form-register div select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 25px;
+    border: none;
+}
+
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.error{
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+
+    .form-register {
+        margin: 30px;
+        width: 610px;
+    }
+
+    .form-register div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+
+    .form-register label {
+        display: block;
+        width: 150px;
+        text-align: right;
+        color: #ECE5C7;
+    }
+
+    .form-register-categorias label {
+        display: block;
+        text-align: end;
+        color: #ECE5C7;
+    }
+
+    .form-register-categorias input {
+        margin-left: 0 auto;
+    }
+
+    .form-pass .fa-solid {
+        cursor: pointer;
+        position: absolute;
+        color: #116A7B;
+        right: 15px
+    }
+
+    .btn {
+        width: 300px;
+    }
+
+    .form-buttons {
+        display: flex;
+        flex-direction: row;
+        margin: 10px
+    }
+
+    .form-register div input::placeholder {
+        color: transparent;
+    }
+}

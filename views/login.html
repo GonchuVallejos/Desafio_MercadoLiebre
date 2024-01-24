@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mercado Liebre</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/formsStyles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header>
         <div class="encabezado">
@@ -16,9 +23,7 @@
             </a>
             <div class="busqueda">
                 <input type="search" placeholder="Buscar productos">
-                <div class="search-button">
-                    <i class="fas fa-search"></i>
-                </div>
+                <i class="fas fa-search"></i>
             </div>
             <div class="mensaje-header">
                 <p><i class="fas fa-hand-holding-usd"></i>Comprá en cuotas y sin tarjeta de crédito</p>
@@ -33,7 +38,7 @@
                 <li><a href="#">Vender</a></li>
                 <li><a href="#">Ayuda</a></li>
             </ul>
-    
+
             <ul>
                 <li><a href="/register">Creá tu cuenta<i class="far fa-id-card"></i></a></li>
                 <li><a href="/login">Ingresá<i class="fas fa-sign-in-alt"></i></a></li>
@@ -47,30 +52,106 @@
     </header>
 
     <main>
-
+        <form action="/session" method="POST" class="form-register" id="form-register" onsubmit="return validarFormulario()">
+            <h2>INICIAR SESION</h2>
+            <div>
+                <label for="usuario">Usuario</label>
+                <input type="text" name="usuario" id="usuario" placeholder="Nombre de Usuario" required>
+            </div>
+            <div class="form-pass">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" class="input-pass" placeholder="Contraseña"
+                    required>
+                <i class="fa-solid fa-eye" id="btn-password"
+                    onclick="mostrarContrasena('password', 'btn-password')"></i>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-session">Iniciar sesion</button>
+            </div>
+        </form>
     </main>
 
     <footer>
         <section>
-            <div class="icon-footer">
-                <i class="fas fa-credit-card"></i>
+            <div class="footer-section">
+                <div class="icon-footer">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h4>Pagá con tarjeta o en efectivo</h4>
+                <p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago. ¡Y
+                    siempre es seguro!</p>
             </div>
-            <h4>Pagá con tarjeta o en efectivo</h4>
-            <p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago. ¡Y siempre es seguro!</p>
-            
-            <div class="icon-footer">
-                <i class="fas fa-gift"></i>
+            <div class="footer-section">
+                <div class="icon-footer">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h4>Envío gratis desde $ 2.500</h4>
+                <p>Solo por estar registrad@ en Mercado Liebre tenés envíos gratis en miles de productos. Es un
+                    beneficio de Mercado Puntos.</p>
             </div>
-            <h4>Envío gratis desde $ 2.500</h4>
-            <p>Solo por estar registrad@ en Mercado Liebre tenés envíos gratis en miles de productos. Es un beneficio de Mercado Puntos.</p>
-            
-            <div class="icon-footer">
-                <i class="fas fa-user-shield"></i>
+            <div class="footer-section">
+                <div class="icon-footer">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h4>Seguridad, de principio a fin</h4>
+                <p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás siempre
+                    protegid@.</p>
             </div>
-            <h4>Seguridad, de principio a fin</h4>
-            <p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás siempre protegid@.</p>
         </section>
-        <p>Copyright &copy 1999-2020 MercadoLiebre S.R.L.</p>
+        <div class="copy">
+            <p><strong>Copyright &copy 1999-2020 MercadoLiebre S.R.L.</strong></p>
+        </div>
     </footer>
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="myModal">
+        <p id="mensajeError" class="error"></p>
+        <button class="btn btn-delete" onclick="cerrarModal()">Cerrar</button>
+    </div>
+
+    <script>
+        function mostrarContrasena(tipoId, iconId) {
+            var tipo = document.getElementById(tipoId);
+            var icon = document.getElementById(iconId);
+
+            if (tipo.type == "password") {
+                tipo.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                tipo.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+
+        function validarFormulario() {
+            var usuarioInput = document.getElementById('usuario').value;
+            var passwordInput = document.getElementById('password').value;
+
+            if (usuarioInput.length > 1 && passwordInput.length > 1) {
+                return true; // Envía el formulario si la longitud es válida
+            } else {
+                mostrarModalError('La longitud de usuario y contraseña debe ser mayor a 1 carácter.');
+                return false; // Evita el envío del formulario si la longitud no es válida
+            }
+        }
+
+        function mostrarModalError(mensaje) {
+            document.getElementById('mensajeError').textContent = mensaje;
+            abrirModal();
+        }
+
+        function abrirModal() {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('modalOverlay').style.display = 'block';
+        }
+
+        function cerrarModal() {
+            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+    </script>
 </body>
+
 </html>
