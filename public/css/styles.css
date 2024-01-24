@@ -240,7 +240,7 @@ li a:active{
 
     
     .shipping i:hover {
-        animation: rotateUp 3s infinite alternate;
+        animation: rotateUp 6s infinite alternate;
     }
 
     @keyframes rotateUp {
